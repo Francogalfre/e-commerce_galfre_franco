@@ -1,27 +1,32 @@
-console.log("Welcome to the JS E-Commerce");
-console.log("Yes yes! Here we use Javascript 😎");
+console.log("Welcome to JS Ecommerce by Franco Galfre");
 
-const dibuMartinezName = "Emiliano Martinez";
-const dibuMartinezImage =
-  "https://storage.googleapis.com/diariodemocracia/news/dibu-martinez-aston-villa-Nottingham-premier-league-inglaterra-1-226cf5.jpg";
+// Selecciona el título y el contenedor de productos
+const title = document.querySelector(".title");
+const container = document.querySelector(".products-container");
+const cards = [];
 
-const title1 = document.querySelector(".dibu1 h5");
-const image1 = document.querySelector(".dibu1 img");
-const button1 = document.querySelector(".dibu1 button");
+// Establece el texto del título
+title.innerText = "Productos";
 
-const title2 = document.querySelector(".dibu2 h5");
-const image2 = document.querySelector(".dibu2 img");
-const button2 = document.querySelector(".dibu2 button");
+// Crea las tarjetas de productos
+for (let i = 1; i <= 8; i++) {
+  const card = `
+    <div class="col-md-3 mb-4">
+        <div class="card">
+            <img src="https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/${i}.jpg" class="card-img-top" alt="Imagen del Auto">
+            <div class="card-body">
+                <h5 class="card-title">Sedán Deportivo ${i}</h5>
+                <p class="card-text">Un sedán elegante y de alto rendimiento con características avanzadas y un diseño estilizado.</p>
+                <div class="d-flex justify-content-between">
+                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-info-circle"></i> Detalles</a>
+                    <a href="#" class="btn btn-cart"><i class="fas fa-shopping-cart"></i>  Agregar 🛒 </a>
+                </div>
+            </div>
+        </div>
+    </div>`;
 
-const title3 = document.querySelector(".dibu3 h5");
-const image3 = document.querySelector(".dibu3 img");
-const button3 = document.querySelector(".dibu3 button");
+  cards.push(card);
+}
 
-title1.innerText = dibuMartinezName;
-image1.src = dibuMartinezImage;
-
-title2.innerText = dibuMartinezName;
-image2.src = dibuMartinezImage;
-
-title3.innerText = dibuMartinezName;
-image3.src = dibuMartinezImage;
+// Une todas las tarjetas en una sola cadena
+container.innerHTML = cards.join("");
