@@ -1,16 +1,15 @@
-console.log("Welcome to JS Ecommerce by Franco Galfre");
+function generateWeb(cantCards) {
+  // Selecciona el título y el contenedor de productos
+  const title = document.querySelector("h1");
 
-// Selecciona el título y el contenedor de productos
-const title = document.querySelector(".title");
-const container = document.querySelector(".products-container");
-const cards = [];
+  title.innerText = "Productos";
 
-// Establece el texto del título
-title.innerText = "Productos";
+  const container = document.querySelector(".products-container");
+  const cards = [];
 
-// Crea las tarjetas de productos
-for (let i = 1; i <= 8; i++) {
-  const card = `
+  // Crea las tarjetas de productos
+  for (let i = 1; i <= cantCards; i++) {
+    const card = `
     <div class="col-md-3 mb-4">
         <div class="card">
             <img src="https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/${i}.jpg" class="card-img-top" alt="Imagen del Auto">
@@ -18,15 +17,18 @@ for (let i = 1; i <= 8; i++) {
                 <h5 class="card-title">Sedán Deportivo ${i}</h5>
                 <p class="card-text">Un sedán elegante y de alto rendimiento con características avanzadas y un diseño estilizado.</p>
                 <div class="d-flex justify-content-between">
-                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-info-circle"></i> Detalles</a>
-                    <a href="#" class="btn btn-cart"><i class="fas fa-shopping-cart"></i>  Agregar 🛒 </a>
+                    <a href="https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/${i}.jpg" class="btn btn-outline-primary"> Ver Mas </a>
+                    <a href="#" class="btn btn-cart"> Agregar 🛒 </a>
                 </div>
             </div>
         </div>
     </div>`;
 
-  cards.push(card);
+    cards.push(card);
+  }
+
+  // Une todas las tarjetas en una sola cadena
+  container.innerHTML = cards.join("");
 }
 
-// Une todas las tarjetas en una sola cadena
-container.innerHTML = cards.join("");
+generateWeb(9);
