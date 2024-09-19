@@ -17,7 +17,7 @@ function generateWeb(cantCards) {
                 <h5 class="card-title">Sedán Deportivo ${i}</h5>
                 <p class="card-text">Un sedán elegante y de alto rendimiento con características avanzadas y un diseño estilizado.</p>
                 <div class="d-flex justify-content-between">
-                    <a href="https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/${i}.jpg" class="btn btn-outline-primary"> Ver Mas </a>
+                    <a href="pages/product.html" class="btn btn-outline-primary"> Ver Mas </a>
                     <a href="#" class="btn btn-cart"> Agregar 🛒 </a>
                 </div>
             </div>
