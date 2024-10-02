@@ -34,7 +34,6 @@ body {
   transition: transform 0.3s ease;
   margin-bottom: 1rem;
   color: #e0e0e0;
-  border: none;
 }
 
 .card:hover {
