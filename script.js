@@ -1,34 +1,33 @@
-function generateWeb(cantCards) {
-  // Selecciona el título y el contenedor de productos
-  const title = document.querySelector("h1");
+import { data } from "./utils/data.js";
 
-  title.innerText = "Productos";
+const title = document.querySelector("h1");
+title.innerText = "Productos";
 
-  const container = document.querySelector(".products-container");
-  const cards = [];
-
-  // Crea las tarjetas de productos
-  for (let i = 1; i <= cantCards; i++) {
-    const card = `
-    <div class="col-md-3 mb-4">
-        <div class="card">
-            <img src="https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/${i}.jpg" class="card-img-top" alt="Imagen del Auto">
-            <div class="card-body">
-                <h5 class="card-title">Sedán Deportivo ${i}</h5>
-                <p class="card-text">Un sedán elegante y de alto rendimiento con características avanzadas y un diseño estilizado.</p>
-                <div class="d-flex justify-content-between">
-                    <a href="pages/product.html" class="btn btn-outline-primary"> Ver Mas </a>
-                    <a href="#" class="btn btn-cart"> Agregar 🛒 </a>
+const cards = data.map((movie) => {
+  return `
+       <div class="col-md-3 mb-4">
+            <div class="card border-0>
+                <img src="${
+                  movie.image
+                }" class="card-img-top" alt="Imagen de la pelicula ${
+    movie.title
+  }">
+                <div class="card-body">
+                <div class="justify-content-start pb-4">
+                    <h5 class="card-title pb-2 text-light">${movie.title}</h5>
+                    <small class="card-genre">${movie.genre}</small>
+                </div>
+                <p class="card-text">${movie.description.slice(0, 50)}</p>
+                <a href="pages/product.html?prod=${
+                  movie.id
+                }" class="btn btn-outline-primary"> Ver Mas </a>
                 </div>
             </div>
         </div>
-    </div>`;
+    `;
+});
 
-    cards.push(card);
-  }
+const container = document.querySelector(".products-container");
 
-  // Une todas las tarjetas en una sola cadena
-  container.innerHTML = cards.join("");
-}
-
-generateWeb(9);
+// Une todas las tarjetas en una sola cadena
+container.innerHTML = cards.join("");

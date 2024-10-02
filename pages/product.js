@@ -1,45 +1,27 @@
-// Clase del producto
-class Product {
-  constructor(titulo, detalle, precio, stock, imagen) {
-    this.titulo = titulo;
-    this.detalle = detalle;
-    this.precio = precio;
-    this.stock = stock;
-    this.imagen = imagen;
-  }
-}
+import { data } from "../utils/data.js";
 
-const product = new Product(
-  "Porsche GTR",
-  "El Porsche GTR es un auto deportivo de lujo con un motor potente que permite aceleraciones rápidas. Su diseño aerodinámico y su interior con asientos de cuero y tecnología avanzada lo hacen destacar.",
-  9000,
-  true, // Stock es true
-  "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/1.jpg"
-);
+const movieId = Number(window.location.search.split("=")[1]);
+const movieFiltered = data.find((movie) => movie.id === movieId);
 
-let productHTML = `
-    <div class="row bg-light p-4 rounded-5 shadow-sm">
+if (movieFiltered) {
+  const productHTML = `
+        <div style="background-color: #1a2630;" class="row text-white p-4 rounded-5 shadow-sm">
         <div class="row">
             <div class="col-md-6">
-                <img src="${product.imagen}" class="img-fluid mb-4" alt="${
-  product.titulo
-}" style="max-width: 100%; height: auto;">
+                <img src="${movieFiltered.image}" class="img-fluid mb-4 rounded-start" alt="${movieFiltered.title}" style="max-width: 100%; height: 100%; object-fit: cover;">
             </div>
             <div class="col-md-6">
-                <h1 class="mb-2">${product.titulo}</h1>
-                <p>${product.detalle}</p>
-                <p class="text-muted" style="font-size: 1.5rem; font-weight: bold; color: #ff5722;">Precio: $${
-                  product.precio
-                }</p>
-                <p class="${product.stock ? "text-success" : "text-danger"}">
-                    ${product.stock ? "Hay Stock" : "No Hay Stock"}
-                </p>
-                <a href="index.html" class="btn btn-outline-primary btn-lg mt-2">Volver al Home</a>
+                <h1 class="mb-2">${movieFiltered.title}</h1>
+                <p style="color: #d1d1d1">${movieFiltered.description}</p>
+                <p class="text-light" style="font-size: 1.5rem; font-weight: bold; color: #ff5722;">Precio: $${movieFiltered.price}</p>
+                <a href="../index.html" class="btn btn-outline-primary mt-2">Volver al Home</a>
             </div>
         </div>
-    </div>
-`;
+    </div>`;
 
-// Tomamos el Main del HTML
-const main = document.querySelector("main");
-main.innerHTML = productHTML;
+  const main = document.querySelector("main");
+  main.innerHTML = productHTML;
+} else {
+  const main = document.querySelector("main");
+  main.innerHTML = `<p>Producto no encontrado.</p>`;
+}
