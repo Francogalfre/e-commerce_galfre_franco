@@ -6,10 +6,10 @@ title.innerText = "Productos";
 const cards = data.map((movie) => {
   return `
        <div class="col-md-3 mb-4">
-            <div class="card>
-                <img src="${
+            <div class="card" style="--bs-card-border-width: 0;">
+                <img src=${
                   movie.image
-                }" class="card-img-top" alt="Imagen de la pelicula ${
+                } class="card-img-top" alt="Imagen de la pelicula ${
     movie.title
   }">
                 <div class="card-body">

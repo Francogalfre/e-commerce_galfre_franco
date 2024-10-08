@@ -14,7 +14,7 @@ header.innerHTML = `
   <div class="container-fluid">
     <div class="d-flex flex-row align-items-center gap-3 justify-content-between">
       <img height="36"src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="Javascript Logo" />
-      <a href="#" class="link-offset-2 link-underline link-underline-opacity-0" style="color: #ffffff; font-size: 1.25rem;">Cine Store</a>
+      <a href="#" class="link-offset-2 link-underline link-underline-opacity-0" style="color: #ffffff; font-size: 1.25rem;">Cine Store 🚬</a>
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
