@@ -84,6 +84,16 @@ body {
   padding-bottom: 18px;
 }
 
+.btn-custom {
+  color: #4a4a4a;
+  border-color: #4a4a4a;
+}
+
+.btn-custom:hover {
+  background-color: #4a4a4a;
+  color: white;
+}
+
 @media (max-width: 1200px) {
   .products-container .col-md-3 {
     flex: 0 0 25%;

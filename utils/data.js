@@ -77,7 +77,7 @@ export const data = [
     description:
       "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
     image: "http://dummyimage.com/216x100.png/ffdab9/000000",
-    genre: "Drama|Romance",
+    genre: "Drama | Romance",
     price: 54,
   },
   {

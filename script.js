@@ -1,28 +1,27 @@
 import { data } from "./utils/data.js";
 
-// Contenedor para las tarjetas de películas
-const container = document.querySelector(".products-container");
+// Definiendo variables
 
-// Cambiar el título de la página
 const title = document.querySelector("h1");
+const input = document.querySelector(".form-control");
+const resetButton = document.querySelector(".delete-button");
+const container = document.querySelector(".products-container");
+const categoriesContainer = document.querySelector(".buttons-container");
+
 title.innerText = "Productos";
 
-let filteredMovies = data;
-
-// Crear y mostrar las tarjetas de películas
-const createCards = (filteredMovies) => {
-  const cards = filteredMovies.map((movie) => {
-    return `
+// Función para crear y mostrar tarjetas de películas
+const createCards = (movies) => {
+  const cards = movies.map(
+    (movie) => `
       <div class="col-md-3 mb-4">
         <div class="card" style="--bs-card-border-width: 0;">
-          <img src=${
-            movie.image
-          } class="card-img-top" alt="Imagen de la pelicula ${movie.title}">
+          <img src=${movie.image} class="card-img-top" alt="${movie.title}">
           <div class="card-body">
-            <div class="justify-content-start pb-4">
-              <h5 class="card-title pb-2 text-light">${movie.title}</h5>
-              <small class="card-genre">${movie.genre}</small>
-            </div>
+            <h5 class="card-title pb-2 text-light">${movie.title}</h5>
+            <span class="card-genre badge bg-secondary text-light mb-2" style="font-size: 1rem; font-weight: normal; display: inline-block;">${
+              movie.genre
+            }</span>
             <p class="card-text">${movie.description.slice(0, 50)}...</p>
             <a href="pages/product.html?prod=${
               movie.id
@@ -30,33 +29,72 @@ const createCards = (filteredMovies) => {
           </div>
         </div>
       </div>
-    `;
-  });
+  `
+  );
 
   container.innerHTML = cards.join("");
 };
 
-// Filtrar las películas según la búsqueda del usuario
+// Filtrando películas según el texto ingresado
 const filterMovies = (event) => {
-  const movieName = event.target.value.toLowerCase();
-  filteredMovies = data.filter((movie) =>
-    movie.title.toLowerCase().includes(movieName)
+  const searchValue = event.target.value.toLowerCase();
+  const filteredMovies = data.filter((movie) =>
+    movie.title.toLowerCase().includes(searchValue)
   );
-
   createCards(filteredMovies);
 };
 
-// Limpiar el campo de búsqueda y restaurar las películas
-const resetButton = document.querySelector(".delete-button");
+// Limpiar el campo de búsqueda y mostrar todas las películas
 resetButton.addEventListener("click", () => {
   input.value = "";
-  filteredMovies = data;
-  createCards(filteredMovies);
+  createCards(data);
 });
 
 // Búsqueda en tiempo real
-const input = document.querySelector(".form-control");
 input.addEventListener("input", filterMovies);
 
-// Mostrar todas las películas al inicio
-createCards(filteredMovies);
+// Definiendo géneros y creando botones
+const genres = [
+  "Todos",
+  "Drama",
+  "Documentary",
+  "Romance",
+  "Comedy",
+  "Crime",
+  "Sci-Fi",
+  "Horror",
+  "Thriller",
+  "Musical",
+];
+
+const buttons = genres.map(
+  (genre) => `
+  <button class="btn btn-secondary me-2 mb-2 genre-button">${genre}</button>
+`
+);
+
+categoriesContainer.innerHTML = buttons.join("");
+
+// Filtrando películas por género seleccionado
+const filterMoviesByGenre = (genre) => {
+  let filteredMovies;
+  if (genre === "Todos") {
+    filteredMovies = data;
+  } else {
+    filteredMovies = data.filter((movie) =>
+      movie.genre.toLowerCase().includes(genre.toLowerCase())
+    );
+  }
+  createCards(filteredMovies);
+};
+
+// Agregando eventos a los botones de género
+const genreButtons = document.querySelectorAll(".genre-button");
+genreButtons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    filterMoviesByGenre(event.target.innerText);
+  });
+});
+
+// Mostrando todas las películas al inicio
+createCards(data);

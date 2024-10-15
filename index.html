@@ -31,9 +31,9 @@
             <input
               type="text"
               id="searchInput"
-              class="form-control"
+              class="form-control rounded"
               placeholder="Parasite, Noise, Eleg..."
-              onkeyup="filterMovies()"
+              onchange="filterMovies()"
             />
             <div class="input-group-append">
               <!-- Botón de búsqueda -->
@@ -71,6 +71,10 @@
                 </svg>
               </button>
             </div>
+          </div>
+
+          <div class="buttons-container">
+            <!----- Aqui adentro estaran los botones de las categorias ----->
           </div>
         </header>
         <section class="row products-container pt-2">
