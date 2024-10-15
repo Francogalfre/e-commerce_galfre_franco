@@ -27,8 +27,53 @@
       <div class="container">
         <header class="mb-4">
           <h1 class="text-start pb-4 text-white"></h1>
+          <div class="input-group w-50 mb-4">
+            <input
+              type="text"
+              id="searchInput"
+              class="form-control"
+              placeholder="Parasite, Noise, Eleg..."
+              onkeyup="filterMovies()"
+            />
+            <div class="input-group-append">
+              <!-- Botón de búsqueda -->
+              <button class="btn btn-outline-secondary ms-2" type="button">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-search"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.442 1.415a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11z"
+                  />
+                </svg>
+              </button>
+              <!-- Botón de limpiar búsqueda (basurero) -->
+              <button
+                class="btn btn-outline-danger delete-button"
+                type="button"
+                onclick="clearSearch()"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="24"
+                  fill="currentColor"
+                  class="bi bi-x"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
         </header>
-        <section class="row products-container">
+        <section class="row products-container pt-2">
           <!----- Las tarjetas se insertarán aquí mediante JavaScript ----->
         </section>
       </div>
