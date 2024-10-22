@@ -16,6 +16,8 @@ form.addEventListener("submit", (event) => {
     window.location.href = "../index.html";
   } else {
     alert("Usuario incorrecto");
+    form.elements.email.value = "";
+    form.elements.password.value = "";
   }
 });
 

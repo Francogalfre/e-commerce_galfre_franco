@@ -8,6 +8,12 @@ const categoriesContainer = document.querySelector(".buttons-container");
 
 title.innerText = "Productos";
 
+const email = localStorage.getItem("userEmail");
+
+if (!email) {
+  window.location.href = "./pages/login.html";
+}
+
 const createCards = (movies) => {
   if (movies.length === 0) {
     container.innerHTML = `<p class="text-danger">No se encontró ninguna película.</p>`;
