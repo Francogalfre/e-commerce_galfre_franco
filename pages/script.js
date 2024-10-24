@@ -1,4 +1,4 @@
-import { data } from "./utils/data.js";
+import { data } from "../utils/data.js";
 
 const title = document.querySelector("h1");
 const input = document.querySelector(".form-control");
@@ -7,12 +7,6 @@ const container = document.querySelector(".products-container");
 const categoriesContainer = document.querySelector(".buttons-container");
 
 title.innerText = "Productos";
-
-const email = localStorage.getItem("userEmail");
-
-if (!email) {
-  window.location.href = "./pages/login.html";
-}
 
 const createCards = (movies) => {
   if (movies.length === 0) {
@@ -40,7 +34,7 @@ const createCards = (movies) => {
               ${movie.genre}
             </span>
             <p class="card-text">${movie.description.slice(0, 50)}...</p>
-            <a href="pages/product.html?prod=${
+            <a href="./product.html?prod=${
               movie.id
             }" class="btn btn-outline-primary">Ver Más</a>
           </div>

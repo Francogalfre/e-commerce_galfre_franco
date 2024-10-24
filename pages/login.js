@@ -1,6 +1,7 @@
 import { user } from "../utils/user.js";
 
 const form = document.querySelector("#form");
+const errorText = document.querySelector("#error");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -13,9 +14,9 @@ form.addEventListener("submit", (event) => {
 
   if (user.email === email && user.password === password) {
     localStorage.setItem("userEmail", email);
-    window.location.href = "../index.html";
+    window.location.href = "./index.html";
   } else {
-    alert("Usuario incorrecto");
+    errorText.style.display = "flex";
     form.elements.email.value = "";
     form.elements.password.value = "";
   }
@@ -24,7 +25,7 @@ form.addEventListener("submit", (event) => {
 const userEmail = localStorage.getItem("userEmail");
 
 if (userEmail) {
-  window.location.href = "../index.html";
+  window.location.href = "./index.html";
 }
 
 console.log(user);
