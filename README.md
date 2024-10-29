@@ -3,7 +3,7 @@
 🛒 **Proyecto de e-commerce** realizado como parte del curso de **Guayerd y Betahub**.  
 Este proyecto consiste en una tienda en línea donde los usuarios pueden explorar y comprar películas.
 
-![Vista previa del proyecto](https://i.imgur.com/FNbxZeB.png) 
+![Vista previa del proyecto](https://i.imgur.com/PlyqjQ5.png) 
 
 ## 🚧 Estado del Proyecto
 
