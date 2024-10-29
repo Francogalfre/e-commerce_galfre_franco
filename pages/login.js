@@ -13,7 +13,13 @@ form.addEventListener("submit", (event) => {
   console.log("Password: ", password);
 
   if (user.email === email && user.password === password) {
+    let quantity = 0;
+
     localStorage.setItem("userEmail", email);
+
+    localStorage.setItem("cart", JSON.stringify([]));
+    localStorage.setItem("quantity", quantity);
+
     window.location.href = "./index.html";
   } else {
     errorText.style.display = "flex";

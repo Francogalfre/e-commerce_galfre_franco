@@ -37,13 +37,17 @@ if (movieFiltered) {
           <div>
             ${
               isLoggedIn
-                ? `<input type="number" min="1" placeholder="Cantidad" class="form-control w-25" />
-                <button class="btn btn-primary mt-2">Comprar</button>`
-                : `<button onclick='window.location.href = "./login.html"' class="btn btn-primary">Iniciar sesión</button>`
+                ? `<div class="d-flex align-items-center gap-2 mb-3 w-100">
+                    <button onclick="decreaseItem()" id="decrease" class="btn btn-secondary btn-md">-</button>
+                    <input type="number" id="quantity" min="1" value="1" class="form-control text-center flex-grow-1" />
+                    <button onclick="increaseItem()" id="increase" class="btn btn-secondary btn-md">+</button>
+                  </div>
+                  <button onclick="addItem()" id="additem" class="btn btn-primary w-100 mt-2 mb-4">Comprar</button>`
+                : `<button onclick='window.location.href = "./login.html"' class="btn btn-primary w-100 mt-2 mb-4">Iniciar sesión</button>`
             }
           </div>
 
-          <a href="../index.html" class="btn btn-outline-primary mt-2">Volver al Home</a>
+          <a href="./index.html" class="btn btn-outline-secondary w-100">Volver al Home</a>
         </div>
       </div>
     </div>
@@ -51,6 +55,46 @@ if (movieFiltered) {
 
   const main = document.querySelector("main");
   main.innerHTML = productHTML;
+
+  const decreaseBtn = document.getElementById("decrease");
+  const increaseBtn = document.getElementById("increase");
+  const addItemBtn = document.getElementById("additem");
+
+  const quantityInput = document.getElementById("quantity");
+
+  decreaseBtn.addEventListener("click", () => {
+    const currentCuantity = Number(quantityInput.value);
+
+    if (currentCuantity > 1) {
+      quantityInput.value = currentCuantity - 1;
+    }
+  });
+
+  increaseBtn.addEventListener("click", () => {
+    const currentCuantity = Number(quantityInput.value);
+
+    if (currentCuantity < movieFiltered.stock) {
+      quantityInput.value = currentCuantity + 1;
+    }
+  });
+
+  addItemBtn.addEventListener("click", () => {
+    const cart = JSON.parse(localStorage.getItem("cart"));
+    const idProduct = movieFiltered.id;
+
+    const quantityToAdd = Number(quantityInput.value);
+
+    cart.push({ id: idProduct, quantity: quantityToAdd });
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    let totalQuantity = 0;
+
+    for (const item of cart) {
+      totalQuantity += item.quantity;
+    }
+
+    localStorage.setItem("quantity", totalQuantity);
+  });
 } else {
   const main = document.querySelector("main");
   main.innerHTML = `<p>Producto no encontrado.</p>`;
