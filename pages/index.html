@@ -14,6 +14,7 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+
     <script src="./script.js" async></script>
 
     <title>E-Commerce JS Course</title>
@@ -38,11 +39,7 @@
             />
             <div class="input-group-append">
               <!-- Botón de limpiar búsqueda (basurero) -->
-              <button
-                class="btn btn-outline-danger delete-button"
-                type="button"
-                onclick="clearSearch()"
-              >
+              <button class="btn btn-outline-danger delete-button" type="button" onclick="clearSearch()">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="18"
@@ -71,13 +68,12 @@
 
     <footer class="footer text-center py-3">
       <div class="container">
-        <p class="mb-0 text-light">
-          © 2024 Franco Galfre / Guayerd. Todos los derechos reservados.
-        </p>
+        <p class="mb-0 text-light">© 2024 Franco Galfre / Guayerd. Todos los derechos reservados.</p>
       </div>
     </footer>
 
     <script src="../components/navbar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="script.js"></script>
   </body>
 </html>

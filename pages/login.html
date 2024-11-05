@@ -9,6 +9,7 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
     <title>Login</title>
     <style>
       body {
@@ -29,14 +30,11 @@
         <label class="form-label">Password</label>
         <input name="password" type="password" class="form-control" required />
       </div>
-      <span id="error" style="display: none; color: red; padding-bottom: 20px"
-        >Contraseña o usuario incorrecto</span
-      >
-      <button type="submit" class="btn btn-primary" id="submit-button">
-        Submit
-      </button>
+      <span id="error" style="display: none; color: red; padding-bottom: 20px">Contraseña o usuario incorrecto</span>
+      <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
     </form>
 
     <script type="module" src="./login.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   </body>
 </html>

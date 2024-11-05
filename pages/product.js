@@ -27,11 +27,7 @@ if (movieFiltered) {
           <p class="font-weight-bold ${
             movieFiltered.stock ? "text-success" : "text-danger"
           }" style="font-size: 1.2rem;">
-            ${
-              movieFiltered.stock > 0
-                ? `${movieFiltered.stock} En Stock`
-                : "Sin Stock"
-            }
+            ${movieFiltered.stock > 0 ? `${movieFiltered.stock} En Stock` : "Sin Stock"}
           </p>
 
           <div>
@@ -42,7 +38,7 @@ if (movieFiltered) {
                     <input type="number" id="quantity" min="1" value="1" class="form-control text-center flex-grow-1" />
                     <button onclick="increaseItem()" id="increase" class="btn btn-secondary btn-md">+</button>
                   </div>
-                  <button onclick="addItem()" id="additem" class="btn btn-primary w-100 mt-2 mb-4">Comprar</button>`
+                  <button onclick="addItem()" id="additem" class="btn btn-primary w-100 mt-2 mb-4" style="font-weight: 600"> <span class="material-symbols-rounded">add_shopping_cart</span>Agregar al carrito</button>`
                 : `<button onclick='window.location.href = "./login.html"' class="btn btn-primary w-100 mt-2 mb-4">Iniciar sesión</button>`
             }
           </div>
@@ -94,6 +90,14 @@ if (movieFiltered) {
     }
 
     localStorage.setItem("quantity", totalQuantity);
+
+    Toastify({
+      text: "Producto agregado al carrito con exito!",
+      className: "info",
+      style: {
+        background: "#218838",
+      },
+    }).showToast();
   });
 } else {
   const main = document.querySelector("main");

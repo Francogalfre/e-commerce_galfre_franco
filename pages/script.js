@@ -34,9 +34,7 @@ const createCards = (movies) => {
               ${movie.genre}
             </span>
             <p class="card-text">${movie.description.slice(0, 50)}...</p>
-            <a href="./product.html?prod=${
-              movie.id
-            }" class="btn btn-outline-primary">Ver Más</a>
+            <a href="./product.html?prod=${movie.id}" class="btn btn-outline-primary">Ver Más</a>
           </div>
         </div>
       </div>
@@ -49,9 +47,7 @@ const createCards = (movies) => {
 const filterMovies = (event) => {
   const searchValue = event.target.value.toLowerCase();
 
-  const filteredMovies = data.filter((movie) =>
-    movie.title.toLowerCase().includes(searchValue)
-  );
+  const filteredMovies = data.filter((movie) => movie.title.toLowerCase().includes(searchValue));
 
   createCards(filteredMovies);
 };
@@ -92,9 +88,7 @@ const filterMoviesByGenre = (genre) => {
     filteredMovies = data;
     title.innerText = `Productos`;
   } else {
-    filteredMovies = data.filter((movie) =>
-      movie.genre.toLowerCase().includes(genre.toLowerCase())
-    );
+    filteredMovies = data.filter((movie) => movie.genre.toLowerCase().includes(genre.toLowerCase()));
     title.innerText = `Productos - ${genre}`;
   }
 

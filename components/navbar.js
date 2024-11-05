@@ -73,6 +73,18 @@ avatar.addEventListener("click", () => {
 });
 
 logoutButton.addEventListener("click", () => {
-  localStorage.removeItem("userEmail");
-  window.location.href = "./login.html";
+  Swal.fire({
+    title: "Seguro que quieres cerrar sesion?",
+    icon: "warning",
+    showDenyButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si, Cerrar Sesion",
+    denyButtonText: `Cancelar`,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      localStorage.removeItem("userEmail");
+      window.location.href = "./login.html";
+    }
+  });
 });
