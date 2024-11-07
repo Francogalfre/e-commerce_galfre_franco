@@ -17,11 +17,17 @@ function calculateTotal(cartArray) {
 }
 
 function removeProduct(productId) {
-  let cart = cartData ? JSON.parse(cartData) : [];
+  let cartData = JSON.parse(localStorage.getItem("cart"));
+  const newCart = cartData.filter((item) => item.product.id !== productId);
+  localStorage.setItem("cart", JSON.stringify(newCart));
 
-  cart = cart.filter((item) => item.product.id !== productId);
+  let totalQuantity = 0;
 
-  localStorage.setItem("cart", JSON.stringify("cart"));
+  for (const item of newCart) {
+    totalQuantity += item.product.quantity;
+  }
+
+  localStorage.setItem("quantity", totalQuantity);
 
   location.reload();
 }
@@ -41,13 +47,14 @@ if (cartData) {
     card.classList.add("cart-item");
 
     card.innerHTML = `
-      <img src="${item.product.image}" alt="${item.product.title}" class="cart-item-image">
-      <div class="cart-item-details">
-        <h3 class="cart-item-title">${item.product.title}</h3>
-        <p class="cart-item-description">${item.product.description.slice(0, 200)}</p>
-        <p class="cart-item-quantity">Cantidad: ${item.quantity}</p>
-        <p class="cart-item-price">Precio Total: $ ${(item.product.price * item.quantity).toFixed(2)}</p>
-      </div>
+        <img src="${item.product.image}" alt="${item.product.title}" class="cart-item-image">
+        <div class="cart-item-details">
+          <h3 class="cart-item-title">${item.product.title}</h3>
+          <p class="cart-item-description">${item.product.description.slice(0, 200)}</p>
+          <p class="cart-item-quantity">Cantidad: ${item.quantity}</p>
+          <p class="cart-item-price">Precio Total: $ ${(item.product.price * item.quantity).toFixed(2)}</p>
+          <button class="btn btn-danger" onclick="removeProduct(${item.product.id})">Eliminar</button>
+        </div>
     `;
 
     cartContainer.appendChild(card);

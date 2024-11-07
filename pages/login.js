@@ -16,6 +16,7 @@ form.addEventListener("submit", (event) => {
 
     localStorage.setItem("cart", JSON.stringify([]));
     localStorage.setItem("quantity", quantity);
+    location.reload();
   } else {
     errorText.style.display = "flex";
     form.elements.email.value = "";
