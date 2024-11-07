@@ -34,11 +34,11 @@ if (movieFiltered) {
             ${
               isLoggedIn
                 ? `<div class="d-flex align-items-center gap-2 mb-3 w-100">
-                    <button onclick="decreaseItem()" id="decrease" class="btn btn-secondary btn-md">-</button>
+                    <button id="decrease" class="btn btn-secondary btn-md">-</button>
                     <input type="number" id="quantity" min="1" value="1" class="form-control text-center flex-grow-1" />
-                    <button onclick="increaseItem()" id="increase" class="btn btn-secondary btn-md">+</button>
+                    <button id="increase" class="btn btn-secondary btn-md">+</button>
                   </div>
-                  <button onclick="addItem()" id="additem" class="btn btn-primary w-100 mt-2 mb-4" style="font-weight: 600"> <span class="material-symbols-rounded">add_shopping_cart</span>Agregar al carrito</button>`
+                  <button id="additem" class="btn btn-primary w-100 mt-2 mb-4" style="font-weight: 600"> <span class="material-symbols-rounded">add_shopping_cart</span>Agregar al carrito</button>`
                 : `<button onclick='window.location.href = "./login.html"' class="btn btn-primary w-100 mt-2 mb-4">Iniciar sesión</button>`
             }
           </div>
@@ -75,12 +75,28 @@ if (movieFiltered) {
   });
 
   addItemBtn.addEventListener("click", () => {
-    const cart = JSON.parse(localStorage.getItem("cart"));
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
     const idProduct = movieFiltered.id;
+
+    const product = data.find((item) => item.id === idProduct);
+    const existedIdInCart = cart.some((item) => item.id === idProduct);
 
     const quantityToAdd = Number(quantityInput.value);
 
-    cart.push({ id: idProduct, quantity: quantityToAdd });
+    if (existedIdInCart) {
+      cart = cart.map((movie) => {
+        if (movie.id === idProduct) {
+          return { ...movie, quantity: movie.quantity + quantityToAdd };
+        } else {
+          return movie;
+        }
+      });
+    } else {
+      if (product) {
+        cart.push({ product: product, id: idProduct, quantity: quantityToAdd });
+      }
+    }
+
     localStorage.setItem("cart", JSON.stringify(cart));
 
     let totalQuantity = 0;
@@ -92,7 +108,7 @@ if (movieFiltered) {
     localStorage.setItem("quantity", totalQuantity);
 
     Toastify({
-      text: "Producto agregado al carrito con exito!",
+      text: "Producto agregado al carrito con éxito!",
       className: "info",
       style: {
         background: "#218838",
