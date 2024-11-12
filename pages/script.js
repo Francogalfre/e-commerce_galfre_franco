@@ -103,4 +103,18 @@ genreButtons.forEach((button) => {
   });
 });
 
-createCards(data);
+const spinner = document.getElementById("spinner");
+
+const myPromise = (movies) => {
+  spinner.style.display = "block";
+
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      createCards(movies);
+      spinner.style.display = "none";
+      resolve();
+    }, 3000);
+  });
+};
+
+myPromise(data);

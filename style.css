@@ -176,6 +176,11 @@ body {
   color: #ffffff;
 }
 
+.spinner-border {
+  margin: 20px auto;
+  display: block;
+}
+
 @media (max-width: 1200px) {
   .products-container .col-md-3 {
     flex: 0 0 25%;

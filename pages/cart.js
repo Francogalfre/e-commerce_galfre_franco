@@ -24,7 +24,7 @@ function removeProduct(productId) {
   let totalQuantity = 0;
 
   for (const item of newCart) {
-    totalQuantity += item.product.quantity;
+    totalQuantity += item.quantity;
   }
 
   localStorage.setItem("quantity", totalQuantity);
