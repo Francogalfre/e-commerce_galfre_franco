@@ -110,9 +110,8 @@ const myPromise = (movies) => {
 
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      createCards(movies);
+      resolve(createCards(movies));
       spinner.style.display = "none";
-      resolve();
     }, 3000);
   });
 };
