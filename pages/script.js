@@ -61,16 +61,16 @@ input.addEventListener("input", filterMovies);
 
 const genres = [
   "Todos",
+  "Animación",
+  "Ciencia Ficción",
+  "Acción",
   "Drama",
-  "Documentary",
-  "Romance",
-  "Comedy",
-  "Crime",
-  "Sci-Fi",
-  "Horror",
-  "Thriller",
+  "Comedia",
   "Musical",
-  "Action",
+  "Romance",
+  "Documental",
+  "Terror",
+  "Crimen",
 ];
 
 const buttons = genres.map(

@@ -62,7 +62,7 @@ if (cartData) {
 
   const total = calculateTotal(cartArray);
   const totalElement = document.getElementById("total");
-  totalElement.textContent = `Total de la compra: ${total}`;
+  totalElement.textContent = `Total de la compra: $${total}`;
 
   const clearCartButton = document.getElementById("clearCart");
   clearCartButton.addEventListener("click", () => {
