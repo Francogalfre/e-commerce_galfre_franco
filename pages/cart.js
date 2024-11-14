@@ -38,6 +38,50 @@ function clearCart() {
   location.reload();
 }
 
+function checkout() {
+  const user = localStorage.getItem("userEmail");
+  const cartItems = JSON.parse(localStorage.getItem("cart"));
+
+  const resource = {
+    user: user,
+    items: cartItems,
+  };
+
+  console.log(resource);
+
+  fetch("https://67367b0baafa2ef222309f81.mockapi.io/cart/orders", {
+    method: "POST",
+    body: JSON.stringify(resource),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      Swal.fire({
+        title: `Gracias ${data.user}!`,
+        text: `Hemos registrado tu orden número ${data.id}.`,
+        icon: "success",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "Aceptar",
+      }).then(() => {
+        clearCart();
+      });
+    })
+    .catch((error) => {
+      Swal.fire({
+        title: "Error",
+        text: "Hubo un problema al registrar tu orden. Por favor, intenta de nuevo.",
+        icon: "error",
+        confirmButtonColor: "#d33",
+        confirmButtonText: "Aceptar",
+      });
+      console.error("Error al registrar la orden:", error);
+    });
+}
+
+const clearBtn = document.getElementById("clearCart");
+const checkoutBtn = document.getElementById("checkoutCart");
+
+checkoutBtn.addEventListener("click", checkout);
+
 if (cartData) {
   const cartContainer = document.getElementById("cart-container");
   const cartArray = JSON.parse(cartData);
@@ -70,6 +114,10 @@ if (cartData) {
   });
 } else {
   const title = document.querySelector("h1");
+
   title.textContent = "Tu Carrito esta vacio";
+  clearBtn.style.visibility = "hidden";
+  checkoutBtn.style.visibility = "hidden";
+
   console.log("El carrito está vacío o no existe.");
 }
