@@ -117,7 +117,7 @@ body {
 .cart-item {
   background-color: #ffffff;
   display: flex;
-  gap: 16px;
+  gap: 12px;
   padding: 16px;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -129,7 +129,7 @@ body {
 }
 
 .cart-item-image {
-  width: 120px;
+  width: 200px;
   height: 120px;
   object-fit: cover;
   border-radius: 8px;
@@ -138,7 +138,7 @@ body {
 .cart-item-details {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
   flex-grow: 1;
 }
 
